@@ -109,7 +109,7 @@
         .voice-container { text-align: center; margin-top: 12px; }
         .voice-btn { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; border: none; border-radius: 40px; padding: 8px 20px; font-size: 12px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); box-shadow: var(--shadow); }
         .voice-btn.listening { animation: pulse-voice 1.5s infinite; background: linear-gradient(135deg, #e74c3c, #c0392b); }
-        @keyframes pulse-voice { 0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); } 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); } }
+        @keyframes pulse-voice { 0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); } 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); </div> }
         .voice-status { font-size: 10px; text-align: center; margin-top: 6px; color: var(--gray); }
         .voice-commands-guide { font-size: 9px; text-align: center; margin-top: 4px; color: #94a3b8; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
         
@@ -120,16 +120,23 @@
         
         .map-container { height: 380px; width: 100%; border-radius: 28px; margin: 12px 0; background: #e2e8f0; overflow: hidden; }
         
-        .modal { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 16px; }
-        .modal-content { background: var(--white); width: 100%; max-width: 420px; border-radius: 48px; padding: 24px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-xl); }
-        .close-circle { position: absolute; top: 18px; right: 18px; background: var(--gray-bg); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: var(--transition); z-index: 10; }
-        .back-btn { position: absolute; top: 18px; left: 18px; background: var(--gray-bg); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: var(--transition); }
+        /* Modal Design Upgraded to prevent clumping */
+        .modal { display: none; position: fixed; z-index: 2000; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 16px; }
+        .modal-content { background: var(--white); width: 100%; max-width: 440px; border-radius: var(--radius-xl); padding: 24px; position: relative; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-xl); border: 1px solid rgba(255, 255, 255, 0.8); }
+        .close-circle { position: absolute; top: 18px; right: 18px; background: var(--gray-bg); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: var(--transition); z-index: 100; }
+        .close-circle:hover { background: #e2e8f0; transform: scale(1.05); }
+        .back-btn { position: absolute; top: 18px; left: 18px; background: var(--gray-bg); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 18px; transition: var(--transition); z-index: 100; }
+        .back-btn:hover { background: #e2e8f0; transform: scale(1.05); }
         
-        .settings-menu { display: flex; flex-direction: column; gap: 12px; }
-        .settings-menu-btn { background: var(--primary-gradient); color: white; border: none; padding: 16px 20px; border-radius: 40px; font-size: 15px; font-weight: 600; cursor: pointer; text-align: center; transition: var(--transition); box-shadow: var(--shadow); }
-        .settings-menu-btn:active { transform: scale(0.97); }
-        .settings-menu-btn.secondary { background: linear-gradient(135deg, #2c3e50, #34495e); }
-        .settings-menu-btn.warning { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        /* Structured settings section wrappers */
+        .settings-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 24px; padding: 16px; margin-bottom: 16px; }
+        .settings-card-title { font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 12px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        
+        .settings-menu-btn { background: var(--white); color: var(--dark); border: 1px solid #e2e8f0; padding: 14px 18px; border-radius: 20px; font-size: 14px; font-weight: 600; cursor: pointer; text-align: left; transition: var(--transition); display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 8px; }
+        .settings-menu-btn:hover { background: var(--gray-bg); border-color: var(--primary-light); transform: translateY(-1px); }
+        .settings-menu-btn:active { transform: translateY(0); }
+        .settings-menu-btn.warning-btn { border-color: #fca5a5; color: var(--accent); }
+        .settings-menu-btn.warning-btn:hover { background: #fef2f2; }
         
         .payment-methods { display: flex; flex-direction: column; gap: 10px; margin: 15px 0; }
         .payment-method-btn { background: var(--gray-bg); border: 1.5px solid #e2e8f0; border-radius: 28px; padding: 14px 18px; cursor: pointer; text-align: left; font-weight: 600; transition: var(--transition); color: var(--dark); }
@@ -365,7 +372,7 @@
 <div id="payment-popup" class="modal">
     <div class="modal-content payment-popup">
         <div class="close-circle" onclick="closePaymentPopup()">✕</div>
-        <h3 style="text-align:center; margin-bottom:20px;">💳 ගෙවීම් ක්‍රමය (PAYMENT METHOD)</h3>
+        <h3 class="text-lg font-bold text-slate-800 mb-4 text-center">💳 ගෙවීම් ක්‍රමය (PAYMENT METHOD)</h3>
         <div class="payment-methods">
             <div class="payment-method-btn" data-method="cash" onclick="selectPaymentMethod('cash')">💰 Cash</div>
             <div class="payment-method-btn" data-method="card" onclick="selectPaymentMethod('card')">💳 Card</div>
@@ -374,7 +381,7 @@
             <div class="payment-method-btn" data-method="other" onclick="selectPaymentMethod('other')">📝 වෙනත්</div>
         </div>
         <div id="payment-detail-fields" class="payment-detail-fields" style="display: none;">
-            <div id="cash-fields" style="display: none;"><p>💰 Cash ගෙවීම් තෝරාගෙන ඇත.</p></div>
+            <div id="cash-fields" style="display: none;"><p class="text-sm font-semibold text-emerald-600">💰 Cash ගෙවීම් තෝරාගෙන ඇත.</p></div>
             <div id="card-fields" style="display: none;">
                 <input type="text" id="card-number" placeholder="අවසාන ඉලක්කම් 4" maxlength="4">
                 <div class="grid-2">
@@ -413,18 +420,104 @@
     </div>
 </div>
 
-<!-- Settings System Menu -->
+<!-- Settings System Menu (Reorganized & Structured beautifully) -->
 <div id="settings-modal" class="modal">
     <div class="modal-content">
         <div class="close-circle" onclick="closeSettingsAndLogout()">✕</div>
-        <h3 style="text-align:center; margin-bottom:24px;">⚙️ SYSTEM SETTINGS</h3>
-        <div class="settings-menu">
-            <button class="settings-menu-btn" onclick="openAppSettings()">📱 APP CONFIGURATION</button>
-            <button class="settings-menu-btn secondary" onclick="openFuelLogModal()">⛽ FUEL REGISTRY</button>
-            <button class="settings-menu-btn secondary" onclick="openRepairLogModal()">🔧 REPAIR LOG</button>
-            <button class="settings-menu-btn secondary" onclick="openReportsMenu()">📊 ANALYSIS & REPORTS</button>
-            <button class="settings-menu-btn warning" onclick="openSystemLogModal()">📋 SYSTEM EVENT LOG</button>
-            <button class="settings-menu-btn" onclick="openDriverApp()">👨‍✈️ DRIVER PERFORMANCE PANEL</button>
+        <h3 class="text-lg font-bold text-slate-800 text-center mb-5">⚙️ SYSTEM MANAGEMENT</h3>
+        
+        <div class="space-y-4">
+            <!-- Core Operations Card -->
+            <div class="settings-card">
+                <div class="settings-card-title">
+                    <span>🛠️ Core Operations</span>
+                </div>
+                <div class="space-y-2">
+                    <button class="settings-menu-btn" onclick="openAppSettings()">
+                        <span>📱 App Configuration</span>
+                        <span class="text-xs text-slate-400">➔</span>
+                    </button>
+                    <button class="settings-menu-btn" onclick="openFuelLogModal()">
+                        <span>⛽ Fuel Log Registry</span>
+                        <span class="text-xs text-slate-400">➔</span>
+                    </button>
+                    <button class="settings-menu-btn" onclick="openRepairLogModal()">
+                        <span>🔧 Repairs Log Book</span>
+                        <span class="text-xs text-slate-400">➔</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Diagnostics & Reports Card -->
+            <div class="settings-card">
+                <div class="settings-card-title">
+                    <span>📊 Reports & Matrix</span>
+                </div>
+                <div class="space-y-2">
+                    <button class="settings-menu-btn" onclick="openReportsMenu()">
+                        <span>📈 Analytics & Reports Engine</span>
+                        <span class="text-xs text-slate-400">➔</span>
+                    </button>
+                    <button class="settings-menu-btn" onclick="openDriverApp()">
+                        <span>👨‍✈️ Driver Performance Console</span>
+                        <span class="text-xs text-slate-400">➔</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Security & Backup Card -->
+            <div class="settings-card">
+                <div class="settings-card-title">
+                    <span>🛡️ Security & Backup</span>
+                </div>
+                <div class="space-y-2">
+                    <button class="settings-menu-btn" onclick="openBackupRestoreModal()">
+                        <span class="text-indigo-700 font-semibold">📥 Data Backup & Restore</span>
+                        <span class="text-xs text-indigo-400">➔</span>
+                    </button>
+                    <button class="settings-menu-btn warning-btn" onclick="openSystemLogModal()">
+                        <span>📋 System Event Logger</span>
+                        <span class="text-xs text-red-300">➔</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Data Backup & Restore Modal -->
+<div id="backup-modal" class="modal">
+    <div class="modal-content">
+        <div class="back-btn" onclick="goBackToSettingsMenu()">←</div>
+        <div class="close-circle" onclick="closeM('backup-modal')">✕</div>
+        <h3 class="text-lg font-bold text-slate-800 text-center mb-3">📂 DATA SECURITY & BACKUPS</h3>
+        <p class="text-xs text-slate-500 mb-4 text-center leading-relaxed">Browser Cache එක Clear වුවද ඔබගේ සියලු දත්ත ආරක්ෂා සහිතව මෙතැනින් කළමනාකරණය කරගත හැක.</p>
+        
+        <div class="space-y-4">
+            <!-- Auto Backups History (New Rolling Feature) -->
+            <div class="bg-indigo-50 border border-indigo-100 p-4 rounded-3xl">
+                <h4 class="font-bold text-indigo-900 mb-1 text-sm flex items-center gap-2">🔄 Auto-Backup History (Rolling 10)</h4>
+                <p class="text-[10px] text-indigo-700 mb-3">සෑම ගෙවීමකදීම ස්වයංක්‍රීයව දත්ත මෙහි Back-up වේ. අවශ්‍ය වේලාව තෝරා Restore කරන්න.</p>
+                <div id="auto-backups-list" class="space-y-2 max-height-[140px] overflow-y-auto mb-2 text-xs" style="max-height: 140px; overflow-y: auto;">
+                    <!-- Auto backup entries rendered dynamically -->
+                </div>
+            </div>
+
+            <!-- Export backup -->
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-3xl">
+                <h4 class="font-bold text-slate-900 mb-1 text-sm">1. Manual Export Backup File</h4>
+                <p class="text-[10px] text-slate-600 mb-3">පද්ධතියේ සියලුම වාර්තා සහ සැකසුම් සුරක්ෂිත ගොනුවක් (.JSON) ලෙස ඔබගේ උපාංගයට බාගන්න.</p>
+                <button class="confirm-payment-btn" style="margin-top:0; background:var(--primary-gradient); padding: 10px;" onclick="exportBackupData()">📥 DOWNLOAD BACKUP (.JSON)</button>
+            </div>
+            
+            <!-- Import backup -->
+            <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-3xl">
+                <h4 class="font-bold text-emerald-900 mb-1 text-sm">2. Restore from Backup File</h4>
+                <p class="text-[10px] text-emerald-600 mb-3">කලින් ඩවුන්ලෝඩ් කරන ලද උපස්ථ ගොනුවක් (.JSON) තෝරා පද්ධතිය නැවත යථා තත්ත්වයට පත් කරන්න.</p>
+                <label class="block">
+                    <input type="file" id="backup-file-input" accept=".json" class="block w-full text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-emerald-100 file:text-emerald-700 hover:file:bg-emerald-200 cursor-pointer" onchange="importBackupData(event)">
+                </label>
+            </div>
         </div>
     </div>
 </div>
@@ -434,36 +527,47 @@
     <div class="modal-content">
         <div class="back-btn" onclick="goBackToSettingsMenu()">←</div>
         <div class="close-circle" onclick="closeM('app-settings-modal')">✕</div>
-        <h3 style="text-align:center; margin-bottom: 20px;">📱 APP CONFIGURATION</h3>
-        <label>App Display Name:</label>
-        <input id="set-app-name">
-        <label>Receipt Default Title:</label>
-        <input id="set-receipt-header">
-        <label>Company Logo:</label>
-        <input type="file" id="logo-upload" accept="image/*">
-        <div class="grid-2">
+        <h3 class="text-lg font-bold text-slate-800 text-center mb-5">📱 APP CONFIGURATION</h3>
+        
+        <div class="space-y-4">
             <div>
-                <label>Base Tariff (LKR):</label>
-                <input id="set-base" type="number">
+                <label class="text-xs font-bold text-slate-500 block mb-1">App Display Name:</label>
+                <input id="set-app-name">
             </div>
             <div>
-                <label>Rate Per KM (LKR):</label>
-                <input id="set-rate" type="number">
+                <label class="text-xs font-bold text-slate-500 block mb-1">Receipt Default Title:</label>
+                <input id="set-receipt-header">
             </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 block mb-1">Company Logo:</label>
+                <input type="file" id="logo-upload" accept="image/*">
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label class="text-xs font-bold text-slate-500 block mb-1">Base Tariff (LKR):</label>
+                    <input id="set-base" type="number">
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-slate-500 block mb-1">Rate Per KM (LKR):</label>
+                    <input id="set-rate" type="number">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label class="text-xs font-bold text-slate-500 block mb-1">Wait Charge/Min:</label>
+                    <input id="set-wait" type="number">
+                </div>
+                <div>
+                    <label class="text-xs font-bold text-slate-500 block mb-1">Night Surcharge (%):</label>
+                    <input id="set-night" type="number">
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-bold text-slate-500 block mb-1">Update Password:</label>
+                <input id="set-pwd" type="password">
+            </div>
+            <button class="confirm-payment-btn" style="margin-top: 10px;" onclick="saveSettings()">💾 SAVE SETTINGS</button>
         </div>
-        <div class="grid-2">
-            <div>
-                <label>Wait Charge/Min:</label>
-                <input id="set-wait" type="number">
-            </div>
-            <div>
-                <label>Night Surcharge (%):</label>
-                <input id="set-night" type="number">
-            </div>
-        </div>
-        <label>Update Settings Password:</label>
-        <input id="set-pwd" type="password">
-        <button class="confirm-payment-btn" onclick="saveSettings()">💾 SAVE SETTINGS</button>
     </div>
 </div>
 
@@ -472,19 +576,40 @@
     <div class="modal-content">
         <div class="back-btn" onclick="goBackToSettingsMenu()">←</div>
         <div class="close-circle" onclick="closeM('fuel-modal')">✕</div>
-        <h3 style="text-align:center; margin-bottom: 15px;">⛽ FUEL LOG REGISTRY</h3>
-        <div class="grid-2">
-            <input type="date" id="fuel-date">
-            <input type="number" id="fuel-liters" placeholder="Liters">
+        <h3 class="text-lg font-bold text-slate-800 text-center mb-4">⛽ FUEL LOG REGISTRY</h3>
+        
+        <div class="space-y-4">
+            <div class="grid-2">
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Date</label>
+                    <input type="date" id="fuel-date">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Liters</label>
+                    <input type="number" id="fuel-liters" placeholder="Liters" oninput="calculateFuelTotal()">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Rate Per Liter</label>
+                    <input type="number" id="fuel-price" placeholder="Rate / L" oninput="calculateFuelTotal()">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Total (LKR)</label>
+                    <input type="number" id="fuel-total" placeholder="Total Cost" readonly>
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-semibold text-slate-500 block mb-1">Notes / වෙනත්</label>
+                <input type="text" id="fuel-notes" placeholder="Notes / Station">
+            </div>
+            <button class="confirm-payment-btn" style="margin-top:10px;" onclick="addFuelLog()">➕ ADD LOG ENTRY</button>
+            <button class="settings-menu-btn" style="margin-top:5px; text-align: center; justify-content: center;" onclick="openFuelReport()">📊 VIEW FUEL LOG ANALYTICS</button>
+            <div class="settings-card mt-3">
+                <div class="settings-card-title">📋 Recent Fuel Log Entries</div>
+                <div id="fuel-list" class="text-xs space-y-1" style="max-height:120px; overflow-y:auto;"></div>
+            </div>
         </div>
-        <div class="grid-2">
-            <input type="number" id="fuel-price" placeholder="Rate Per Liter">
-            <input type="number" id="fuel-total" placeholder="Calculated Total" readonly>
-        </div>
-        <input type="text" id="fuel-notes" placeholder="Notes / වෙනත්">
-        <button class="confirm-payment-btn" onclick="addFuelLog()">➕ ADD LOG ENTRY</button>
-        <button class="settings-menu-btn secondary" style="margin-top:10px; width: 100%;" onclick="openFuelReport()">📊 FUEL LOG ANALYSIS</button>
-        <div id="fuel-list" style="margin-top:15px; max-height:150px; overflow-y:auto;"></div>
     </div>
 </div>
 
@@ -493,19 +618,40 @@
     <div class="modal-content">
         <div class="back-btn" onclick="goBackToSettingsMenu()">←</div>
         <div class="close-circle" onclick="closeM('repair-modal')">✕</div>
-        <h3 style="text-align:center; margin-bottom: 15px;">🔧 VEHICLE REPAIRS LOG</h3>
-        <div class="grid-2">
-            <input type="date" id="repair-date">
-            <input type="text" id="repair-desc" placeholder="වැඩ විස්තරය">
+        <h3 class="text-lg font-bold text-slate-800 text-center mb-4">🔧 VEHICLE REPAIRS LOG</h3>
+        
+        <div class="space-y-4">
+            <div class="grid-2">
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Repair Date</label>
+                    <input type="date" id="repair-date">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Work Description</label>
+                    <input type="text" id="repair-desc" placeholder="වැඩ විස්තරය">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Cost (LKR)</label>
+                    <input type="number" id="repair-cost" placeholder="පිරිවැය (LKR)">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold text-slate-500 block mb-1">Garage / Service Center</label>
+                    <input type="text" id="repair-garage" placeholder="ගරාජයේ නම">
+                </div>
+            </div>
+            <div>
+                <label class="text-xs font-semibold text-slate-500 block mb-1">Additional Notes</label>
+                <input type="text" id="repair-notes" placeholder="විශේෂ සටහන්">
+            </div>
+            <button class="confirm-payment-btn" style="margin-top:10px;" onclick="addRepairLog()">➕ RECORD ENTRY</button>
+            <button class="settings-menu-btn" style="margin-top:5px; text-align: center; justify-content: center;" onclick="openRepairReport()">📊 VIEW REPAIR REPORT SUMMARY</button>
+            <div class="settings-card mt-3">
+                <div class="settings-card-title">📋 Recent Repair Entries</div>
+                <div id="repair-list" class="text-xs space-y-1" style="max-height:120px; overflow-y:auto;"></div>
+            </div>
         </div>
-        <div class="grid-2">
-            <input type="number" id="repair-cost" placeholder="පිරිවැය (LKR)">
-            <input type="text" id="repair-garage" placeholder="ගරාජයේ නම">
-        </div>
-        <input type="text" id="repair-notes" placeholder="සටහන්">
-        <button class="confirm-payment-btn" onclick="addRepairLog()">➕ RECORD ENTRY</button>
-        <button class="settings-menu-btn secondary" style="margin-top:10px; width: 100%;" onclick="openRepairReport()">📊 REPORT SUMMARY</button>
-        <div id="repair-list" style="margin-top:15px; max-height:150px; overflow-y:auto;"></div>
     </div>
 </div>
 
@@ -514,15 +660,36 @@
     <div class="modal-content">
         <div class="back-btn" onclick="goBackToSettingsMenu()">←</div>
         <div class="close-circle" onclick="closeM('reports-menu-modal')">✕</div>
-        <h3 style="text-align:center; margin-bottom: 20px;">📊 REPORTS ENGINE</h3>
-        <div class="settings-menu">
-            <button class="settings-menu-btn" onclick="openPanel('report-modal')">📊 TRANSACTIONS REPORT</button>
-            <button class="settings-menu-btn secondary" onclick="openPanel('income-modal')">📈 REVENUE CHARTING</button>
-            <button class="settings-menu-btn secondary" onclick="openPanel('history-modal')">📜 RIDE HISTORY LOG</button>
-            <button class="settings-menu-btn secondary" onclick="openTravelReport()">📍 TRAVEL LOG ANALYTICS</button>
-            <button class="settings-menu-btn secondary" onclick="openProfitReport()">💰 PROFIT & EXPENSES REPORT</button>
-            <button class="settings-menu-btn secondary" onclick="showPeakHoursReport()">🕒 PEAK HOURS DENSITY</button>
-            <button class="settings-menu-btn secondary" onclick="showDriverPerformanceReport()">👨‍✈️ DRIVER MATRIX REPORT</button>
+        <h3 class="text-lg font-bold text-slate-800 text-center mb-5">📊 REPORTS ENGINE</h3>
+        <div class="space-y-3">
+            <button class="settings-menu-btn" onclick="openPanel('report-modal')">
+                <span>📊 Transactions Balance Summary</span>
+                <span>➔</span>
+            </button>
+            <button class="settings-menu-btn" onclick="openPanel('income-modal')">
+                <span>📈 Revenue Graph Charting</span>
+                <span>➔</span>
+            </button>
+            <button class="settings-menu-btn" onclick="openPanel('history-modal')">
+                <span>📜 Ride History Registry Copy</span>
+                <span>➔</span>
+            </button>
+            <button class="settings-menu-btn" onclick="openTravelReport()">
+                <span>📍 Travel Distance Logs</span>
+                <span>➔</span>
+            </button>
+            <button class="settings-menu-btn" onclick="openProfitReport()">
+                <span>💰 Net Profit & Expenses Balance</span>
+                <span>➔</span>
+            </button>
+            <button class="settings-menu-btn" onclick="showPeakHoursReport()">
+                <span>🕒 Peak Operational Hours Density</span>
+                <span>➔</span>
+            </button>
+            <button class="settings-menu-btn" onclick="showDriverPerformanceReport()">
+                <span>👨‍✈️ Driver Performance Matrix Matrix</span>
+                <span>➔</span>
+            </button>
         </div>
     </div>
 </div>
@@ -770,7 +937,7 @@
         </div>
         <input type="password" id="admin-pass" placeholder="Password" style="text-align:center; margin-top:15px;">
         <button class="login-btn" style="background:var(--primary-gradient); color:white; width:100%; margin-top:15px; padding:14px; border:none; border-radius:30px; font-weight:bold; cursor:pointer;" onclick="checkLogin()">LOGIN SESSION</button>
-        <button class="settings-menu-btn secondary" style="margin-top:10px; width: 100%;" onclick="closeM('login-modal')">CANCEL</button>
+        <button class="settings-menu-btn secondary" style="margin-top:10px; width: 100%; justify-content: center; text-align: center;" onclick="closeM('login-modal')">CANCEL</button>
     </div>
 </div>
 
@@ -972,7 +1139,7 @@
 
     // Modals Navigation Management
     function goBackToSettingsMenu() {
-        closeM('app-settings-modal'); closeM('fuel-modal'); closeM('repair-modal'); closeM('reports-menu-modal'); closeM('system-log-modal');
+        closeM('app-settings-modal'); closeM('fuel-modal'); closeM('repair-modal'); closeM('reports-menu-modal'); closeM('system-log-modal'); closeM('backup-modal');
         document.getElementById('settings-modal').style.display = 'flex';
     }
     function goBackToFuelLog() { closeM('fuel-report-modal'); document.getElementById('fuel-modal').style.display = 'flex'; }
@@ -1465,6 +1632,9 @@
         list.push(pendingRideData); 
         localStorage.setItem('rides', JSON.stringify(list)); 
         
+        // Trigger automated Day/Time rolling backup instantly!
+        triggerAutomatedBackup();
+        
         closePaymentPopup(); 
         showReceipt(pendingRideData, false); 
         
@@ -1478,6 +1648,98 @@
         sendNotification('Payment Received', `LKR ${pendingRideData.fare.toFixed(2)} collected`);
         
         pendingRideData = null;
+    }
+    
+    // ========== AUTOMATIC ROLLING BACKUP ENGINE ==========
+    function getBackupDataObject() {
+        const keys = ['rides', 'fuel_logs', 'repair_logs', 'system_logs', 'amt_settings'];
+        const backupObj = {};
+        keys.forEach(k => {
+            const val = localStorage.getItem(k);
+            if (val !== null) backupObj[k] = val;
+        });
+        // Add receipt counters dynamically
+        for (let i = 0; i < localStorage.length; i++) {
+            let k = localStorage.key(i);
+            if (k && k.startsWith('cnt_')) {
+                backupObj[k] = localStorage.getItem(k);
+            }
+        }
+        return backupObj;
+    }
+
+    function triggerAutomatedBackup() {
+        try {
+            const backupData = getBackupDataObject();
+            const timestamp = Date.now();
+            const dateStr = new Date().toLocaleString('si-LK', { hour12: true });
+            
+            let autoBackups = JSON.parse(localStorage.getItem('amt_auto_backups') || '[]');
+            
+            // Unshift new backup to keep chronological order (newest first)
+            autoBackups.unshift({
+                id: 'AUTO_' + timestamp,
+                timestamp: timestamp,
+                date: dateStr,
+                payload: backupData
+            });
+            
+            // Restrict size to keep rolling 10-day backups (Overwrites oldest)
+            if (autoBackups.length > 10) {
+                autoBackups = autoBackups.slice(0, 10);
+            }
+            
+            localStorage.setItem('amt_auto_backups', JSON.stringify(autoBackups));
+            addSystemLog('AUTO-BACKUP', 'Automated Day/Time system snapshot captured', `Point ID: AUTO_${timestamp}`);
+            renderAutoBackupsList();
+        } catch(e) {
+            console.error('Auto backup failed:', e);
+            addSystemLog('ERROR', 'Automated Day/Time backup generation crashed', e.message);
+        }
+    }
+
+    function renderAutoBackupsList() {
+        const listContainer = document.getElementById('auto-backups-list');
+        if (!listContainer) return;
+        
+        let autoBackups = JSON.parse(localStorage.getItem('amt_auto_backups') || '[]');
+        if (autoBackups.length === 0) {
+            listContainer.innerHTML = '<div class="text-center p-3 text-slate-400 italic">No automated restore points found.</div>';
+            return;
+        }
+        
+        listContainer.innerHTML = autoBackups.map(item => `
+            <div class="flex items-center justify-between bg-white border border-slate-100 rounded-xl p-2 shadow-sm">
+                <div>
+                    <span class="font-bold text-slate-700 block text-[11px]">🕒 ${item.date}</span>
+                    <span class="text-[9px] text-slate-400 font-mono">ID: ${item.id}</span>
+                </div>
+                <button onclick="restoreAutoBackup('${item.id}')" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-bold px-3 py-1 rounded-full text-[10px] transition">Restore</button>
+            </div>
+        `).join('');
+    }
+
+    function restoreAutoBackup(backupId) {
+        if (!confirm('අවධානය: මෙමඟින් තෝරාගත් දින සහ වේලාව අනුව පද්ධතියේ පවතින සියලුම දත්ත යළි ස්ථාපනය කෙරේ. තහවුරු කරන්න?')) return;
+        
+        try {
+            let autoBackups = JSON.parse(localStorage.getItem('amt_auto_backups') || '[]');
+            let match = autoBackups.find(b => b.id === backupId);
+            
+            if (match && match.payload) {
+                const payload = match.payload;
+                Object.keys(payload).forEach(k => {
+                    localStorage.setItem(k, payload[k]);
+                });
+                showToast('ස්වයංක්‍රීය උපස්ථය සාර්ථකව ප්‍රතිස්ථාපනය විය!', 'success');
+                addSystemLog('RESTORE', 'Restored successfully from auto backup', `Point ID: ${backupId}`);
+                setTimeout(() => window.location.reload(), 1500);
+            } else {
+                showToast('උපස්ථය සොයා ගැනීමට නොහැකි විය!', 'error');
+            }
+        } catch(e) {
+            showToast('Restore කිරීම අසාර්ථකයි!', 'error');
+        }
     }
     
     function showReceipt(ride, isDuplicate) { 
@@ -1534,13 +1796,12 @@
     
     function resetToNew() { if(sTime && !confirm("නව ගමනක් ආරම්භ කිරීමට වත්මන් දත්ත මකා දැමිය යුතුද?")) return; if(watchId) navigator.geolocation.clearWatch(watchId); releaseWakeLock(); document.body.classList.remove('ride-active'); document.querySelectorAll('.mode-btn').forEach(btn => { btn.style.pointerEvents='auto'; btn.style.opacity='1'; }); sTime=null; totalMeters=0; lastLat=null; lastLon=null; currentDestinationAddress=""; currentTrackingId=null; deliveryPickupName=""; deliveryPickupPhone=""; deliveryDeliveryName=""; deliveryDeliveryPhone=""; document.getElementById('startBtn').innerHTML="START RIDE"; document.getElementById('startBtn').classList.remove('btn-active-anim'); document.getElementById('startBtn').disabled=false; document.getElementById('start-loc').value=''; document.getElementById('end-loc').value=''; document.getElementById('mobile').value=''; document.getElementById('manual-fare').value=''; document.getElementById('discount-input').value=''; document.getElementById('wait-select').value='0'; document.getElementById('manual-km-input').value='0'; document.getElementById('nav-container').style.display='none'; document.getElementById('pickup-name').value=''; document.getElementById('pickup-phone').value=''; document.getElementById('delivery-name').value=''; document.getElementById('delivery-phone').value=''; updateDisplay(); localStorage.removeItem('amt_ride_state'); if(currentMode==='auto') refreshCurrentLocation(); if(currentMode!=='manual') startGPS(); else { gpsReady=true; document.getElementById('startBtn').disabled=false; } showToast('යෙදුම නව ගමනක් සඳහා සූදානම්!', 'info'); stopTrackingUpdates(); }
     
-    // ========== TRACKING & QR (RESOLVES 404 BY REDIRECTING PARAMETERS BACK TO ROOT INDEX.HTML) ==========
+    // ========== TRACKING & QR (RESOLVES 404 BY RESILIENT HASH ROUTING) ==========
     function generateTrackingId() { return 'TRK' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).substr(2, 6).toUpperCase(); }
     
     function showTrackingPopup() {
         if (!currentTrackingId) { currentTrackingId = generateTrackingId(); }
         
-        // Save current trip state to tracking storage
         if (currentLat && currentLng) {
             localStorage.setItem(`tracking_${currentTrackingId}`, JSON.stringify({
                 id: currentTrackingId,
@@ -1555,9 +1816,8 @@
             }));
         }
         
-        // Clean routing directly back to index.html with query parameters to eliminate 404 error
-        const baseUrl = window.location.href.split('?')[0];
-        const trackingUrl = `${baseUrl}?track=${currentTrackingId}`;
+        const baseUrl = window.location.href.split('#')[0].split('?')[0];
+        const trackingUrl = `${baseUrl}#track=${currentTrackingId}`;
         
         document.getElementById('trackingLinkDisplay').innerHTML = trackingUrl;
         const qrContainer = document.getElementById('trackingQR');
@@ -1569,16 +1829,15 @@
     function closeTrackingPopup() { document.getElementById('trackingPopupModal').style.display = 'none'; }
     
     function shareTrackingWhatsApp() {
-        const baseUrl = window.location.href.split('?')[0];
-        const trackingUrl = `${baseUrl}?track=${currentTrackingId}`;
+        const baseUrl = window.location.href.split('#')[0].split('?')[0];
+        const trackingUrl = `${baseUrl}#track=${currentTrackingId}`;
         window.open(`https://wa.me/?text=${encodeURIComponent('📍 සජීවීව මගේ ගමන මෙතැනින් බලන්න: ' + trackingUrl)}`, '_blank');
     }
     
     function copyTrackingLink() {
-        const baseUrl = window.location.href.split('?')[0];
-        const trackingUrl = `${baseUrl}?track=${currentTrackingId}`;
+        const baseUrl = window.location.href.split('#')[0].split('?')[0];
+        const trackingUrl = `${baseUrl}#track=${currentTrackingId}`;
         
-        // Fallback robust copy to clipboard
         const el = document.createElement('textarea');
         el.value = trackingUrl;
         document.body.appendChild(el);
@@ -1619,6 +1878,62 @@
         }
     }
     
+    // ========== SYSTEM BACKUP & RESTORE MODULE ==========
+    function openBackupRestoreModal() {
+        closeM('settings-modal');
+        renderAutoBackupsList();
+        document.getElementById('backup-modal').style.display = 'flex';
+    }
+    
+    function exportBackupData() {
+        const backupObj = getBackupDataObject();
+        const blob = new Blob([JSON.stringify(backupObj, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `AMT_SYSTEM_BACKUP_${new Date().toISOString().slice(0,10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        addSystemLog('BACKUP', 'System backup exported');
+        showToast('පද්ධති දත්ත සාර්ථකව බාගත කරන ලදී!', 'success');
+    }
+    
+    function importBackupData(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const data = JSON.parse(e.target.result);
+                if (typeof data !== 'object') throw new Error('Invalid format');
+                
+                if (!data.amt_settings && !data.rides) {
+                    throw new Error('Not an AMT backup file');
+                }
+                
+                if (confirm('වැදගත්: මෙමඟින් ඔබගේ පවතින දත්ත මකාදමා උපස්ථයේ ඇති දත්ත ඇතුළත් කෙරේ. තහවුරු කරන්න?')) {
+                    Object.keys(data).forEach(k => {
+                        localStorage.setItem(k, data[k]);
+                    });
+                    
+                    addSystemLog('RESTORE', 'System backup successfully restored');
+                    showToast('දත්ත සාර්ථකව ප්‍රතිස්ථාපනය විය! යෙදුම නැවත පූරණය වෙමින්...', 'success');
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1500);
+                }
+            } catch(err) {
+                console.error(err);
+                showToast('Restore අසාර්ථක විය! දෝෂ සහිත ගොනුවකි.', 'error');
+            }
+        };
+        reader.readAsText(file);
+    }
+    
     // ========== THERMAL BLUETOOTH PRINT ==========
     async function openThermalPrint() {
         if (!navigator.bluetooth) { showToast('Bluetooth not supported. Use Chrome or download PDF.', 'error'); downloadReceiptPDF(); return; }
@@ -1645,14 +1960,13 @@
         document.getElementById('map-modal').style.display = 'flex';
         
         setTimeout(function() {
-            // Destroy Leaflet map instance securely by completely replacing DOM node to prevent initialized error crashes
             const parent = document.getElementById('map-wrapper');
             if (parent) {
                 parent.innerHTML = '<div id="map" class="map-container"></div>';
             }
             
             try {
-                mapObj = L.map('map').setView([6.9271, 79.8612], 12); // Colombo default
+                mapObj = L.map('map').setView([6.9271, 79.8612], 12);
                 L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                     attribution: '&copy; OpenStreetMap',
                     maxZoom: 19
@@ -1676,7 +1990,6 @@
                     });
                 }
                 
-                // Configure searches inside the sytem map picker
                 const mSearch = document.getElementById('map-search');
                 const mResults = document.getElementById('search-results');
                 
@@ -1765,7 +2078,6 @@
     async function searchSriLankaLocations(q) {
         if (!q || q.length < 2) return [];
         
-        // Check offline database first
         let localMatches = popularSriLankaLocations.filter(loc => 
             loc.display_name.toLowerCase().includes(q.toLowerCase())
         );
@@ -1825,8 +2137,33 @@
     // ========== FUEL REGISTRY LOGS ==========
     let fuelLogs = JSON.parse(localStorage.getItem('fuel_logs') || '[]');
     function saveFuelLogs() { localStorage.setItem('fuel_logs', JSON.stringify(fuelLogs)); updateFuelList(); }
-    function addFuelLog() { let date = document.getElementById('fuel-date').value || new Date().toISOString().split('T')[0]; let liters = parseFloat(document.getElementById('fuel-liters').value); let price = parseFloat(document.getElementById('fuel-price').value); if (!liters || !price) { showToast("Fuel volume and price required", 'warning'); return; } let total = liters * price; fuelLogs.push({ id: Date.now(), date, liters, price, total, notes: document.getElementById('fuel-notes').value }); saveFuelLogs(); document.getElementById('fuel-liters').value = ''; document.getElementById('fuel-price').value = ''; showToast("Fuel registry successfully recorded!", 'success'); }
-    function updateFuelList() { let c = document.getElementById('fuel-list'); if(c) c.innerHTML = fuelLogs.slice().reverse().slice(0,10).map(l => `<div style="padding:8px; border-bottom:1px solid #e2e8f0;">${l.date} | ${l.liters}L @ LKR ${l.price} = LKR ${l.total.toFixed(2)}</div>`).join(''); let ft = document.getElementById('fuel-total'); if(ft && document.getElementById('fuel-liters').value && document.getElementById('fuel-price').value) ft.value = (parseFloat(document.getElementById('fuel-liters').value||0) * parseFloat(document.getElementById('fuel-price').value||0)).toFixed(2); }
+    
+    function calculateFuelTotal() {
+        let liters = parseFloat(document.getElementById('fuel-liters').value || 0);
+        let price = parseFloat(document.getElementById('fuel-price').value || 0);
+        document.getElementById('fuel-total').value = (liters * price).toFixed(2);
+    }
+
+    function addFuelLog() { 
+        let date = document.getElementById('fuel-date').value || new Date().toISOString().split('T')[0]; 
+        let liters = parseFloat(document.getElementById('fuel-liters').value); 
+        let price = parseFloat(document.getElementById('fuel-price').value); 
+        if (!liters || !price) { showToast("Fuel volume and price required", 'warning'); return; } 
+        let total = liters * price; 
+        fuelLogs.push({ id: Date.now(), date, liters, price, total, notes: document.getElementById('fuel-notes').value }); 
+        saveFuelLogs(); 
+        document.getElementById('fuel-liters').value = ''; 
+        document.getElementById('fuel-price').value = ''; 
+        document.getElementById('fuel-total').value = '';
+        document.getElementById('fuel-notes').value = '';
+        showToast("Fuel registry successfully recorded!", 'success'); 
+    }
+    
+    function updateFuelList() { 
+        let c = document.getElementById('fuel-list'); 
+        if(c) c.innerHTML = fuelLogs.slice().reverse().slice(0,10).map(l => `<div style="padding:8px; border-bottom:1px solid #e2e8f0;">${l.date} | ${l.liters}L @ LKR ${l.price} = LKR ${l.total.toFixed(2)}</div>`).join(''); 
+    }
+    
     function getFuelByDateRange(s,e) { return fuelLogs.filter(l => l.date >= s && l.date <= e); }
     function showFuelReportTab(t) { document.querySelectorAll('#fuel-report-modal .report-tab').forEach(tb=>tb.classList.remove('active')); if(event&&event.target) event.target.classList.add('active'); document.getElementById('fuel-date-range-panel').style.display = t==='range'?'block':'none'; let now=new Date(), s='', e=''; if(t==='daily') { s=e=now.toISOString().split('T')[0]; } else if(t==='monthly') { s=new Date(now.getFullYear(),now.getMonth(),1).toISOString().split('T')[0]; e=new Date(now.getFullYear(),now.getMonth()+1,0).toISOString().split('T')[0]; } else if(t==='yearly') { s=new Date(now.getFullYear(),0,1).toISOString().split('T')[0]; e=new Date(now.getFullYear(),11,31).toISOString().split('T')[0]; } let logs = getFuelByDateRange(s,e); let totalL = logs.reduce((a,b)=>a+b.liters,0); let totalC = logs.reduce((a,b)=>a+b.total,0); document.getElementById('fuel-report-container').innerHTML = `<div style="text-align:center; padding:10px;"><strong>${t.toUpperCase()}</strong><br>Total: ${totalL.toFixed(2)}L | LKR ${totalC.toFixed(2)}</div><div class="payment-stats">${logs.map(r=>`<div class="stat-row"><span>${r.date}</span><span>${r.liters}L @ LKR ${r.price}=LKR ${r.total.toFixed(2)}</span></div>`).join('')}</div>`; }
     function updateFuelReport() { let s=document.getElementById('fuel-start-date').value, e=document.getElementById('fuel-end-date').value; if(!s||!e) return; let logs=getFuelByDateRange(s,e); let totalL=logs.reduce((a,b)=>a+b.liters,0); let totalC=logs.reduce((a,b)=>a+b.total,0); document.getElementById('fuel-report-container').innerHTML = `<div style="text-align:center;"><strong>${s} to ${e}</strong><br>Total: ${totalL.toFixed(2)}L | LKR ${totalC.toFixed(2)}</div><div class="payment-stats">${logs.map(r=>`<div class="stat-row"><span>${r.date}</span><span>${r.liters}L @ LKR ${r.price}=LKR ${r.total.toFixed(2)}</span></div>`).join('')}</div>`; }
@@ -1835,7 +2172,7 @@
     // ========== REPAIR REGISTRY LOGS ==========
     let repairLogs = JSON.parse(localStorage.getItem('repair_logs') || '[]');
     function saveRepairLogs() { localStorage.setItem('repair_logs', JSON.stringify(repairLogs)); updateRepairList(); }
-    function addRepairLog() { let date = document.getElementById('repair-date').value || new Date().toISOString().split('T')[0]; let desc = document.getElementById('repair-desc').value; let cost = parseFloat(document.getElementById('repair-cost').value); if (!desc || !cost) { showToast("Details and Cost required", 'warning'); return; } repairLogs.push({ id: Date.now(), date, desc, cost, garage: document.getElementById('repair-garage').value, notes: document.getElementById('repair-notes').value }); saveRepairLogs(); document.getElementById('repair-desc').value = ''; document.getElementById('repair-cost').value = ''; showToast("Repair record added successfully!", 'success'); }
+    function addRepairLog() { let date = document.getElementById('repair-date').value || new Date().toISOString().split('T')[0]; let desc = document.getElementById('repair-desc').value; let cost = parseFloat(document.getElementById('repair-cost').value); if (!desc || !cost) { showToast("Details and Cost required", 'warning'); return; } repairLogs.push({ id: Date.now(), date, desc, cost, garage: document.getElementById('repair-garage').value, notes: document.getElementById('repair-notes').value }); saveRepairLogs(); document.getElementById('repair-desc').value = ''; document.getElementById('repair-cost').value = ''; document.getElementById('repair-garage').value = ''; document.getElementById('repair-notes').value = ''; showToast("Repair record added successfully!", 'success'); }
     function updateRepairList() { let c = document.getElementById('repair-list'); if(c) c.innerHTML = repairLogs.slice().reverse().slice(0,10).map(r => `<div style="padding:8px; border-bottom:1px solid #e2e8f0;">${r.date} | ${r.desc} | LKR ${r.cost.toFixed(2)}</div>`).join(''); }
     function getRepairByDateRange(s,e) { return repairLogs.filter(r => r.date >= s && r.date <= e); }
     function showRepairReportTab(t) { document.querySelectorAll('#repair-report-modal .report-tab').forEach(tb=>tb.classList.remove('active')); if(event&&event.target) event.target.classList.add('active'); document.getElementById('repair-date-range-panel').style.display = t==='range'?'block':'none'; let now=new Date(), s='', e=''; if(t==='daily') { s=e=now.toISOString().split('T')[0]; } else if(t==='monthly') { s=new Date(now.getFullYear(),now.getMonth(),1).toISOString().split('T')[0]; e=new Date(now.getFullYear(),now.getMonth()+1,0).toISOString().split('T')[0]; } else if(t==='yearly') { s=new Date(now.getFullYear(),0,1).toISOString().split('T')[0]; e=new Date(now.getFullYear(),11,31).toISOString().split('T')[0]; } let logs = getRepairByDateRange(s,e); let totalC = logs.reduce((a,b)=>a+b.cost,0); document.getElementById('repair-report-container').innerHTML = `<div style="text-align:center; padding:10px;"><strong>${t.toUpperCase()}</strong><br>Total Expenses: LKR ${totalC.toFixed(2)}</div><div class="payment-stats">${logs.map(r=>`<div class="stat-row"><span>${r.date}</span><span>${r.desc} - LKR ${r.cost.toFixed(2)}</span></div>`).join('')}</div>`; }
@@ -2274,9 +2611,8 @@
         if(id === 'report-modal') showReportTab('daily'); 
     }
 
-    // ========== DYNAMIC PASSENGER LIVE TRACKING VIEW ENGINE (INTERCEPTS INCOMING PATHS) ==========
+    // ========== DYNAMIC PASSENGER LIVE TRACKING VIEW ENGINE (INTERCEPTS INCOMING HASH ROUTING) ==========
     function renderTrackingView(trackingId) {
-        // Redefine whole body layout to present an elite real-time tracking interface
         document.body.innerHTML = `
             <div class="app-container" style="max-width: 480px; width: 100%;">
                 <div class="header-section">
@@ -2315,14 +2651,15 @@
             </div>
         `;
         
-        let tMap = null, driverMarker = null, startMarker = null;
+        let tMap = null, driverMarker = null;
         
-        // Setup Live tracking map
         try {
             tMap = L.map('tracking-map').setView([6.9271, 79.8612], 13);
             L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(tMap);
+            
+            setTimeout(() => { tMap.invalidateSize(); }, 500);
         } catch(err) { console.error(err); }
 
         function pollTracking() {
@@ -2368,13 +2705,20 @@
         setInterval(pollTracking, 3000);
     }
     
-    // Request notification permission and auto-start
     setTimeout(() => requestNotificationPermission(), 3000);
     
     window.onload = function() { 
-        // Route directly to Passenger Tracking Mode if custom URL parameters are detected
         const urlParams = new URLSearchParams(window.location.search);
-        const trackingId = urlParams.get('track') || urlParams.get('id');
+        let trackingId = urlParams.get('track') || urlParams.get('id');
+        
+        if (!trackingId) {
+            const hash = window.location.hash;
+            if (hash && hash.includes('track=')) {
+                const match = hash.match(/track=([^&]+)/);
+                if (match) trackingId = match[1];
+            }
+        }
+
         if (trackingId && trackingId.startsWith('TRK')) {
             renderTrackingView(trackingId);
             return;
